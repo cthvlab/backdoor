@@ -97,31 +97,6 @@ cargo run --example client
 ```sh
 cargo run --example server
 ```
-Пример кода, который показывает использование WebSocket, QUIC и WebRTC:
-
-```rust
-#[tokio::main]
-async fn main() {
-    // WebSocket клиент
-    let ws_client = WebSocketClient::connect("ws://127.0.0.1:8080").await.unwrap();
-    ws_client.send(b"Hello via WebSocket!").await.unwrap();
-    let ws_response = ws_client.receive().await.unwrap();
-    println!("Received via WebSocket: {:?}", ws_response);
-
-    // WebRTC клиент
-    let webrtc_client = WebRTCClient::connect("wss://127.0.0.1:4433").await.unwrap();
-    webrtc_client.send(b"Hello via WebRTC!").await.unwrap();
-    let webrtc_response = webrtc_client.receive().await.unwrap();
-    println!("Received via WebRTC: {:?}", webrtc_response);
-
-    // QUIC клиент
-    let quinn_client = QuinnClient::connect("127.0.0.1:4433").await.unwrap();
-    quinn_client.send(b"Hello via QUIC!").await.unwrap();
-    let quinn_response = quinn_client.receive().await.unwrap();
-    println!("Received via QUIC: {:?}", quinn_response);
-}
-```
-
 
 
 ## Контрибьюции
